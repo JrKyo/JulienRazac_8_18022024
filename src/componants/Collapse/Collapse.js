@@ -6,17 +6,17 @@ export default function Collapse({title, description}) {
   const toggle = () => {
     setOPen(!open);
   };
-
+  
   return (
     <div className='contenair-collapse'>
       
       <div className='title'>
         <h4>{title}</h4>
-        <i onClick={toggle} class="fa-solid fa-chevron-up"></i>
+        <i onClick={toggle} className={open?"fa-solid fa-chevron-up fa-chevron-active":"fa-solid fa-chevron-up"}></i>
       </div>
       
         <div className={open? "content-show" : "content-parent"}>
-          <span className='content'>{description}</span>
+        {typeof(description)=="string"?<span className='content'>{description}</span>:description.map((element)=> <li className='list'>{element}</li>)}
         </div>
     </div>
   );
